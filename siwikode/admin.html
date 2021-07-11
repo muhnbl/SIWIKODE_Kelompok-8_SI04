@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Halaman Admin</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<style>
+	a {
+	text-decoration: none;
+	}
+
+</style>
+
+<body>
+
+<a href="index.html">Logout</a>
+
+<a href="tambah.html">Tambah data wisatakuliner</a>
+<br><br>
+
+
+<form action="" method="post">
+
+
+	<input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
+	<button type="submit" name="cari">Cari!</button>
+	
+</form>
+<br><br>
+
+<!-- navigasi -->
+
+ <section>
+ 
+
+ <h1>Data Daftar Wisata</h1>
+   <div class="tbl-header">
+   	  <table cellpadding="0" cellspacing="0" border="0">
+   	  	 <thead>
+	<tr>
+		<th>No.</th>
+		<th>Tanggal</th>
+
+		<th>Gambar</th>
+		<th>Nama</th>
+		<th>No.Telp</th>
+		<th>Email</th>
+		<th>Gmaps</th>
+		<th>Wisata</th>
+		<th>Action</th>
+	</tr>
+	</thead>
+	</table>
+	 </div>
+
+
+
+<div class="tbl-content">
+	    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+	<?php $i = 1; ?>
+	<?php foreach( $wisatakuliner as $row ) : ?>
+	<tr>
+		<td><?= $i; ?></td>
+		<td><?= $row["nama"]; ?></td>
+		<td><?= $row["notelp"]; ?></td>
+		<td><?= $row["email"]; ?></td>
+		<td><?= $row["gmaps"]; ?></td>
+		<td><?= $row["wisata"]; ?></td>
+				<td>
+			<a href="">ubah</a> |
+			<a href="" onclick="return confirm('yakin?');">hapus</a>
+		</td>
+	</tr>
+		<?php $i++; ?>
+	<?php endforeach; ?>
+      </tbody>
+    </table>
+
+
+  </div>
+
+</section>
+<script>
+	// '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+</script>
+
+	
+
+
+
+</body>
+</html>
